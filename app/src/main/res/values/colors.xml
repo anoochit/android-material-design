@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    
+    <!-- Indigo 500 -->
+    <color name="colorPrimary">#3F51B5</color>
+    <!-- Indigo 700 -->
+    <color name="colorPrimaryDark">#303F9F</color>
+    <!-- Indigo 50 -->
+    <color name="colorAccent">#E8EAF6</color>
+    
+</resources>
