@@ -6,10 +6,15 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup; 
+import android.view.ViewGroup;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -17,21 +22,19 @@ import android.view.ViewGroup;
  */
 public class NavigationDrawerFragment extends Fragment {
 
+    private RecyclerView recyclerView;
+    private ActionBarDrawerToggle mDrawerToggle;
+    private DrawerLayout mDrawerLayout;    
+    private View containerView;
+    private InformationAdapter adapter;
+    private boolean mLearnDrawer;
+    private boolean mFromSaveInstance;
+    static  final String PREF_FILENAME = "testpref";
+    static  final String KEY_DRAWER = "userkey";
 
     public NavigationDrawerFragment() {
         // Required empty public constructor
     }
-    
-    private ActionBarDrawerToggle mDrawerToggle;
-    private DrawerLayout mDrawerLayout;
-    
-    private View containerView;
-    
-    private boolean mLearnDrawer;
-    private boolean mFromSaveInstance;
-    
-    static  final String PREF_FILENAME = "testpref";
-    static  final String KEY_DRAWER = "userkey";
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -47,8 +50,32 @@ public class NavigationDrawerFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        View layout =inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
+        recyclerView = (RecyclerView) layout.findViewById(R.id.recyclerview);        
+        adapter = new InformationAdapter(getActivity(),getData());
+        recyclerView.setAdapter(adapter);
+
+        final LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
+        recyclerView.setLayoutManager(layoutManager);
+        
+        return layout; 
+    }
+    
+    public static List<Information> getData() {
+        List<Information> data = new ArrayList<>();
+        int[] icons = {R.drawable.ic_globe, R.drawable.ic_globe,R.drawable.ic_globe,R.drawable.ic_globe};
+        String[] titles = {"Title 1","Title 2","Title 3","Title 4"};
+        
+        for (int i=0;i<titles.length && i < icons.length;i++){
+            Information current = new Information();
+            current.iconId=icons[i];
+            current.title=titles[i];
+            data.add(current);
+        }
+        return data;
     }
 
     public void setUp(int fragmentId, DrawerLayout drawerLayout, Toolbar toolbar) {
