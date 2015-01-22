@@ -29,5 +29,12 @@
         sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
         <dex dex="/Users/xavier/Project/AndroidMaterialDesignExample/MaterialDesign/app/build/intermediates/pre-dexed/debug/classes-a70f025ca4d7e3ebe299241dfb4bc8305d4bac35.jar" />
     </item>
+    <item
+        jar="/Users/xavier/Project/AndroidMaterialDesignExample/MaterialDesign/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/Users/xavier/Project/AndroidMaterialDesignExample/MaterialDesign/app/build/intermediates/pre-dexed/debug/classes-57d4a141dc175960e584b501c23ba232d88e499c.jar" />
+    </item>
 
 </items>
